@@ -1,0 +1,16 @@
+﻿  project.c
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(142,16): warning C4047: 'function': 'machineT *' differs in levels of indirection from 'machineT **'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(142,16): warning C4024: 'displayAll': different types for formal and actual parameter 1
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(47,12): warning C4101: 'newNode': unreferenced local variable
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(51,7): warning C4101: 'printingChoice': unreferenced local variable
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(48,12): warning C4101: 'temp': unreferenced local variable
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(283,7): warning C4133: '=': incompatible types - from 'machineT *' to 'machineT *'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(289,3): warning C4133: 'return': incompatible types - from 'machineT *' to 'machineT *'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(340,2): warning C4133: 'return': incompatible types - from 'machineT *' to 'machineT *'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(362,28): warning C4028: formal parameter 1 different from declaration
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(369,8): warning C4133: '=': incompatible types - from 'machineT *' to 'machineT *'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(629,6): warning C4029: declared formal parameter list different from definition
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(721,7): warning C4133: '=': incompatible types - from 'machineT *' to 'machineT *'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(777,3): warning C4133: 'return': incompatible types - from 'machineT *' to 'machineT *'
+C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\project.c(828,2): warning C4133: 'return': incompatible types - from 'machineT *' to 'machineT *'
+  Project1.vcxproj -> C:\Users\GRACIATHEODORAHENG-S\OneDrive - Atlantic TU\year_2\advanced procedural programming\projectFINAL\Project1\Project1\x64\Debug\Project1.exe
