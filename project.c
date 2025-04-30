@@ -39,6 +39,7 @@ void printStatsToFile(machineT** top, int typeChoice);
 void listValuation(machineT** top, machineT** end);
 struct machineT* insertionSortValuation(machineT* top);
 int isSortedByValuation = 0;
+#define MAX_PASSWORD_LENGTH 6
 
 void main()
 {
@@ -54,24 +55,36 @@ void main()
 	int mode = 0;
 	int found = 0;
 	char username[6];
-	char password[6];
+	char password[MAX_PASSWORD_LENGTH];
 	char sysUser[6];
 	char sysPassword[6];
 	FILE* lp;
+	int p = 0;
 
 	//logging in
 	printf("**** LOG IN ****");
 	printf("\nPlease your username: ");
 	scanf("%s", &username);
 	printf("\nPlease your password: ");
-	scanf("%s", &password);
-	/*
-	for (int i = 0; i < 6; i++) {
-		password[i] = getch();  // use getch() to hide password input
-		printf("*");
+	while (1) {
+		char ch = getch();
+
+		if (ch == 13) {  // enter key
+			break;
+		}
+		else if (ch == 8) {  // backspace
+			if (p > 0) {
+				p--;
+				printf("\b \b");  // move back, overwrite with space, move back again
+			}
+		}
+		else if (p < MAX_PASSWORD_LENGTH - 1) {
+			password[p++] = ch;
+			printf("*");
+		}
 	}
-	
-	*/
+
+	password[p] = '\0';  // Null-terminate password
 
 	//check if login info is correct
 	lp = fopen("login.txt", "r");
@@ -243,6 +256,8 @@ void addMachine(machineT** top, machineT** end, int sortByValuation)
 	machineT* newNode;
 	machineT* temp;
 	temp = *end;
+	char* atSign;
+	char* dotCom;
 
 	newNode = (machineT*)malloc(sizeof(machineT));
 
@@ -253,9 +268,19 @@ void addMachine(machineT** top, machineT** end, int sortByValuation)
 	scanf("%d %f %d %d %d", &newNode->year, &newNode->cost, &newNode->currentValue,
 		&newNode->currentMileage, &newNode->nextMileage);
 
-	printf("Please enter the owner's name, email, phone number: ");
-	scanf("%s %s %d", newNode->name, newNode->email,
-		&newNode->phoneNum);
+	do {
+		printf("Please enter the owner's name, email, phone number: ");
+		scanf("%s %s %d", newNode->name, newNode->email,
+			&newNode->phoneNum);
+
+		dotCom = strstr(newNode->email, ".com");
+		atSign = strstr(newNode->email, "@");
+
+		if (!dotCom || !atSign)
+		{
+			printf("Invalid Email entered! Please Try Again\n");
+		}
+	} while (!dotCom || !atSign);
 
 	printf("Please enter the machinery type (1 - Tractor, 2 - Excavator, 3 - Roller, 4 - Crane, 5 - Mixer): ");
 	scanf("%d", &newNode->type);
@@ -522,7 +547,7 @@ void updateDetails(machineT* top)
 	scanf("%d", &temp->numOfBreakdowns);
 
 
-	printf("UPDATING DETAILS ACCORDINGLY...\n");
+	printf("\nUPDATING DETAILS ACCORDINGLY...\n");
 	printf("\n");
 }
 

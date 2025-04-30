@@ -1,0 +1,21 @@
+3 3 3 3 3.00 3 3 3 3 3 3 3 3
+2 2 2 2 2.00 0 2 2 2 2 2 2 2
+**** GENERATING % OF BREAKDOWNS ****
+
+No machines of the selected type found... 
+
+**** FOR MACHINERY TYPE 2 ****
+1. 0.00% of machines with no breakdowns
+2. 100.00% of machines with less than 3 breakdowns
+3. 0.00% of machines with less than 5 breakdowns
+4. 0.00% of machines with more than 5 breakdowns
+
+**** FOR MACHINERY TYPE 3 ****
+1. 0.00% of machines with no breakdowns
+2. 0.00% of machines with less than 3 breakdowns
+3. 100.00% of machines with less than 5 breakdowns
+4. 0.00% of machines with more than 5 breakdowns
+
+No machines of the selected type found... 
+
+No machines of the selected type found... 
