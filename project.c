@@ -1,3 +1,4 @@
+//GRACIA HENG G00427320 
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
@@ -24,9 +25,8 @@ typedef struct node
 }machineT;
 
 void loadtoLL(machineT** top);
-void addBookAtEnd(machineT** top, machineT** end);
-void addBookAtStart(machineT** top, machineT** end);
 void addMachine(machineT** top, machineT** end, int isSortedByValuation);
+int isUnique(char* input[20], machineT* temp);
 struct machineT* insertionSortByChassis(machineT* top);
 void displayAll(machineT* top, int isSortedByValuation);
 void displayOne(machineT* top, int searchTerm);
@@ -39,7 +39,7 @@ void printStatsToFile(machineT** top, int typeChoice);
 void listValuation(machineT** top, machineT** end);
 struct machineT* insertionSortValuation(machineT* top);
 int isSortedByValuation = 0;
-#define MAX_PASSWORD_LENGTH 6
+#define MAX_PASSWORD_LENGTH 100
 
 void main()
 {
@@ -115,7 +115,7 @@ void main()
 
 		if (found == 0)
 		{
-			printf("\nUsername or Password failed!");
+			printf("\nUsername or Password failed!\n");
 			printf("\n");
 			mode = 0;
 		}
@@ -125,7 +125,7 @@ void main()
 
 	if (mode == 1)
 	{
-
+		//load previous databases if there are any
 		loadtoLL(&headPtr);
 
 		do
@@ -261,9 +261,16 @@ void addMachine(machineT** top, machineT** end, int sortByValuation)
 
 	newNode = (machineT*)malloc(sizeof(machineT));
 
-	printf("\nPlease enter the Chassis Number, Make, Model: ");
-	scanf("%s %s %s", newNode->chassisNum, newNode->make, newNode->model);
+	do {
+		printf("\nPlease enter the Chassis Number, Make, Model: ");
+		scanf("%s %s %s", newNode->chassisNum, newNode->make, newNode->model);
+		if (isUnique(newNode->chassisNum, temp) == 0)
+		{
+			printf("Please ensure that the Chassis Number entered is unique!\n");
+		}
 
+	} while (isUnique(newNode->chassisNum, temp) == 0);
+	
 	printf("Please enter the year, cost, current value, current mileage, next mileage: ");
 	scanf("%d %f %d %d %d", &newNode->year, &newNode->cost, &newNode->currentValue,
 		&newNode->currentMileage, &newNode->nextMileage);
@@ -272,7 +279,9 @@ void addMachine(machineT** top, machineT** end, int sortByValuation)
 		printf("Please enter the owner's name, email, phone number: ");
 		scanf("%s %s %d", newNode->name, newNode->email,
 			&newNode->phoneNum);
+		while ((getchar()) != '\n');
 
+		//check if it contains the substr
 		dotCom = strstr(newNode->email, ".com");
 		atSign = strstr(newNode->email, "@");
 
@@ -297,15 +306,28 @@ void addMachine(machineT** top, machineT** end, int sortByValuation)
 	}
 	else
 	{
-
 		temp = *end;  // temp points to the last node in the list
 
-		temp->NEXT = newNode;  // Link the last node to the new node
-		newNode->PREV = temp;  // Link the new node back to the last node
-		*end = newNode;        // Update the end of the list to the new node
+		temp->NEXT = newNode;  // link the last node to the new nodel
+		newNode->PREV = temp;  // link the new node back to the last node
+		*end = newNode;        // update the end of the list to the new node
 	}
 
+	//sort according to chassis number
 	*top = insertionSortByChassis(*top);
+}
+
+int isUnique(char *input[20], machineT* temp)
+{
+	while (temp != NULL)
+	{
+		if (strcmp(input, temp->chassisNum) == 0)
+		{
+			return 0;
+		}
+		temp = temp->NEXT;
+	}
+	return 1;
 }
 
 struct machineT* insertionSortByChassis(machineT* top)
@@ -365,25 +387,6 @@ struct machineT* insertionSortByChassis(machineT* top)
 	return sorted;
 }
 
-int findLength(machineT** top, machineT** end)
-{
-	machineT* temp;
-	temp = *top;
-	int counter = 0;
-
-	while (temp != NULL)
-	{
-		temp = temp->NEXT;
-		counter++;
-	}
-
-	printf("The length of the list is: %d!", counter);
-	printf("\n");
-
-	return counter;
-}
-
-
 void displayAll(machineT** top, int isSortedByValuation)
 {
 	machineT* temp;
@@ -394,6 +397,7 @@ void displayAll(machineT** top, int isSortedByValuation)
 		*top = insertionSortByChassis(*top);
 
 	}// Sort by chassisNum
+
 	while (temp != NULL)
 	{
 		printf("\nMachine Chassis Number: %s\n", temp->chassisNum);
@@ -576,7 +580,12 @@ void deleteMachine(machineT** top, machineT** end, int position)
 		return;
 	}
 
-	for (int i = 1; temp != NULL && i < position; i++) {
+	while (temp != NULL)
+	{
+		if (atoi(temp->chassisNum) == position) //if this is the machine
+		{
+			break;
+		}
 		temp = temp->NEXT;
 	}
 
@@ -586,12 +595,19 @@ void deleteMachine(machineT** top, machineT** end, int position)
 		return;
 	}
 
+	//update the next node's pointer
 	if (temp->NEXT != NULL) {
 		temp->NEXT->PREV = temp->PREV;
 	}
 
+	//if the node to be deleted is the head node
 	if (temp->PREV != NULL) {
 		temp->PREV->NEXT = temp->NEXT;
+	}
+
+	// if the node is the tail node, update the end pointer
+	if (temp == *end) {
+		*end = temp->PREV;
 	}
 
 	free(temp);
@@ -698,7 +714,6 @@ void printStatsToFile(machineT** top, int typeChoice, FILE* op)
 	{
 		fprintf(op, "\nNo machines of the selected type found... \n");
 	}
-
 }
 
 void printToFile(machineT* top)

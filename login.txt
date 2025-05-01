@@ -1,3 +1,3 @@
-user11 passwd
-user22 passwd
-user33 passwd
+user11 passw1
+user22 passw2
+user33 passw3
