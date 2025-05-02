@@ -1,16 +1,20 @@
-3 3 3 2003 300.00 10 10 10 Angie angie@email.com 2222222 2 3
-2 2 2 2002 200.00 20 20 20 Gracia gracia@.com 2222222 2 2
+2 2 2 2 2.00 2 2 2 2 2@.com 2 2 2
+3 3 3 3 3.00 3 3 3 3 3@.com 3 3 3
 **** GENERATING % OF BREAKDOWNS ****
 
 No machines of the selected type found... 
 
 **** FOR MACHINERY TYPE 2 ****
 1. 0.00% of machines with no breakdowns
-2. 50.00% of machines with less than 3 breakdowns
-3. 50.00% of machines with less than 5 breakdowns
+2. 100.00% of machines with less than 3 breakdowns
+3. 0.00% of machines with less than 5 breakdowns
 4. 0.00% of machines with more than 5 breakdowns
 
-No machines of the selected type found... 
+**** FOR MACHINERY TYPE 3 ****
+1. 0.00% of machines with no breakdowns
+2. 0.00% of machines with less than 3 breakdowns
+3. 100.00% of machines with less than 5 breakdowns
+4. 0.00% of machines with more than 5 breakdowns
 
 No machines of the selected type found... 
 

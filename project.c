@@ -240,7 +240,11 @@ void loadtoLL(machineT** top)
 			if (numInputs == 13)
 			{
 				dataFromFile->NEXT = *top;
+				if (*top != NULL) {
+					(*top)->PREV = dataFromFile;
+				}
 				*top = dataFromFile;
+
 			}
 			else
 			{
