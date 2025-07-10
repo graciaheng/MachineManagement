@@ -1,0 +1,1 @@
+The aim of the project was to write a program using C for a company to store and organise their machines into ‘databases’. For this I used linked lists for smoother use, and a menu function for the users to choose what they need to add or update. 
